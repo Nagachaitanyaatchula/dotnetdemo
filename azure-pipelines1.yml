@@ -2,8 +2,6 @@
 
 trigger:
 - develop
-- feature/*
-- master
 
 pool:
  name: 'Azure Pipelines'
