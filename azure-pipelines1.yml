@@ -8,9 +8,9 @@ trigger:
 pool:
  name: 'Azure Pipelines'
 
- -task: UseDotNet@2
-   displayName:'Use .NET Core sdk'
-    inputs:
+- task: DotNetCoreCLI@2
+  displayName:'Use .NET Core sdk'
+  inputs:
      packageType: sdk
      version: 6.0.x
      installationPath: $(Agent.ToolsDirectory)/dotnet
