@@ -1,0 +1,17 @@
+
+
+trigger:
+- develop
+- feature/*
+- master
+
+pool:
+  name: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotNetFramework: 'net6.0'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+
