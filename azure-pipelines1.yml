@@ -18,3 +18,4 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '6.0.X'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
