@@ -10,8 +10,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  dotNetFramework: 'net6.0'
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'build'
 
+steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
