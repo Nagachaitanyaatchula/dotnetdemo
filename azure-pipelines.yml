@@ -33,7 +33,7 @@ stages:
       inputs:
        command: 'restore'
        
-       - task: UseDotNet@2 
+    - task: UseDotNet@2 
       displayName: 'publish'
       inputs:
        command: 'publish'
