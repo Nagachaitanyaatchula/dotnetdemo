@@ -57,6 +57,6 @@ stages:
                 appType: 'webApplinux'
                 WebAppName: $(appName)
                 SlotName: 'Dev' 
-                packageForLinux: '$(Pipleline.Wordspace)/$(buildConfiguration)/*.zip'
+                packageForLinux: '$(Pipleline.Workspace)/$(buildConfiguration)/*.zip'
 
 
