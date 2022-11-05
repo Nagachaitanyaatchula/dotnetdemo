@@ -56,7 +56,7 @@ stages:
                 azureSubscription: 'Azure subscription 1(45abc66f-8ee9-46d7-b82a-b59ee6c86d38)'
                 appType: 'webApplinux'
                 WebAppName: $(appName)
-                SlotName: 'Dev' 
-                packageForLinux: '$(Pipleline.Workspace)/$(buildConfiguration)/*.zip'
+                SlotName: 'dev' 
+                packageForLinux: '$(Pipeline.Workspace)/$(buildConfiguration)/*.zip'
 
 
