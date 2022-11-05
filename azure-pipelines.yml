@@ -57,6 +57,6 @@ stages:
                 appType: 'webApplinux'
                 WebAppName: $(appName)
                 SlotName: 'dev' 
-                packageForLinux: '$(Pipeline.Workspace)/$(buildConfiguration)/*.zip'
+                packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
 
 
