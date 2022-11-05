@@ -40,7 +40,7 @@ stages:
 
 - stage: 'Deploy to dev'
     variables:
-    appName: 'As12'
+      appName: 'As12'
 
   jobs:
   - deployment: 'dev'
