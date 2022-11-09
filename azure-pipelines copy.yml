@@ -1,0 +1,69 @@
+
+trigger:
+- develop
+-
+pool:
+  name: 'LinuxPool'
+
+variables:
+  buildConfiguration: 'Release'
+
+ 
+
+stages:
+- stage: 'Build'
+  jobs:
+  - job: 'Build'
+  
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk'
+      inputs:
+        packageType: sdk
+        version: 6.0.x
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+    - task: UseDotNet@2
+      displayName: 'test'
+      inputs:
+       command: 'test'
+       workingDir: 'ClientApp'
+    -task: Docker@2
+     inputs:
+        containerRegistry: 'azurere'
+        repository: 'dotnetdemo'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+
+    - task: UseDotNet@2
+      displayName: 'restore'
+      inputs:
+       command: 'restore'
+       
+    - task: UseDotNet@2 
+      displayName: 'publish'
+      inputs:
+       command: 'publish'
+
+
+- stage: 'Deploy'
+  variables:
+    appName: 'As12'
+
+  jobs:
+  - deployment: 'dev'
+    environment: 'dev'
+    strategy:
+       runOnce:
+        deploy:
+         steps:
+         
+           - task: AzureRmWebAppDeployment@4
+             inputs:
+                ConnectionType: 'AzureRM'
+                azureSubscription: 'Azure subscription 1(45abc66f-8ee9-46d7-b82a-b59ee6c86d38)'
+                appType: 'webApplinux'
+                WebAppName: $(appName)
+                SlotName: 'dev' 
+                packageForLinux: '$(build.artifactStagingDirectory)'                
+
+
