@@ -18,6 +18,7 @@ stages:
     
     - task: Docker@2
       inputs:
+        containerRegistry: 'azurere'
         repository: 'dotnetdemo'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
