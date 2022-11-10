@@ -7,8 +7,6 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  
-
 
 stages:
 - stage: 'Build'
