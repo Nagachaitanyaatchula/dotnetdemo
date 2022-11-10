@@ -8,14 +8,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   
-- task: Docker@2
-  inputs:
-    repository: 'dotnetdemo'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-
- 
-
 
 
 stages:
@@ -24,6 +16,13 @@ stages:
   - job: 'Build'
   
     steps:
+    
+    - task: Docker@2
+      inputs:
+        repository: 'dotnetdemo'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+
     - task: UseDotNet@2
       displayName: 'Use .NET Core sdk'
       inputs:
