@@ -1,9 +1,7 @@
 
 trigger:
 - develop
--feature
-
--
+- feature
 pool:
   name: 'demo'
 
